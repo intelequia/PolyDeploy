@@ -15,7 +15,10 @@ namespace PolyDeploy.DeployClient
 
         public IReadOnlyCollection<string> GetPackageFiles(string path)
         {
-            return this.fileSystem.Directory.GetFiles(path, "*.zip");
+            return this.fileSystem.Directory.GetFiles(path, "*.zip", new EnumerationOptions()
+            {
+                RecurseSubdirectories = true
+            });
         }
 
         public Stream GetFileStream(string fileName)
